@@ -53,7 +53,7 @@ HEADERS = {
 }
 
 CSV_FILE = "flowingdata_full_content_with_images.csv"
-
+send_to_telegram('hello', keyboard=inline_keyboard)
 # ----------------- Load Existing Data -----------------
 if os.path.exists(CSV_FILE):
     df_existing = pd.read_csv(CSV_FILE)
