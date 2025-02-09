@@ -52,7 +52,7 @@ HEADERS = {
     )
 }
 
-CSV_FILE = "flowingdata_posts.csv"
+CSV_FILE = "flowingdata_full_content_with_images.csv"
 
 # ----------------- Load Existing Data -----------------
 if os.path.exists(CSV_FILE):
