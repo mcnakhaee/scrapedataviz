@@ -5,7 +5,7 @@ on:
     branches:
       - main
   schedule:
-    - cron: '0,30 8-22 * * *' # Runs every 30 minutes between 8am and 10pm  workflow_dispatch:
+    - cron: '0 8 * * *' # Runs every day at 9am CET
   workflow_dispatch:
 
 jobs:
