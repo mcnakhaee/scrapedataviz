@@ -25,7 +25,7 @@ jobs:
       - name: Install dependencies to run get_data.py
         run: |
           python -m pip install --upgrade pip
-          pip install -r scrapedataviz/requirements.txt
+          pip install -r requirements.txt
 
       - name: Run send_to_telegram.py
         env:
