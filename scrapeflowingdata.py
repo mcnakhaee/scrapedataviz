@@ -96,7 +96,7 @@ if response:
         print(f"Page {page} scraped. Found {len(new_data)} new posts.")
     time.sleep(random.uniform(1, 3))
 
-# ----------------- Extract Text Content from Each New Post -----------------
+# ----------------- Extract Content and Send to Telegram -----------------
 for idx, data in enumerate(new_data):
     link = data.get('Link')
     if not link:
@@ -109,7 +109,7 @@ for idx, data in enumerate(new_data):
         continue
 
     tree = html.fromstring(response.content)
-    # Extract text content using the new XPath
+    # Extract text content using the specified XPath
     content_nodes = tree.xpath(CONTENT_XPATH)
     content_text = " ".join([node.text_content().strip() for node in content_nodes])
 
@@ -119,9 +119,21 @@ for idx, data in enumerate(new_data):
     else:
         print(f"No content found for link: {link}")
 
-    time.sleep(random.uniform(1, 3))
+    # Create a snippet (first 300 characters) to include in the Telegram message
+    snippet = content_text[:300] + ("..." if len(content_text) > 300 else "")
+    post_message = (
+        f"New post found:\n\n"
+        f"Title: {data['Text']}\n"
+        f"Link: {link}\n\n"
+        f"Snippet: {snippet}\n\n"
+        f"Choose an action below:"
+    )
 
+    # Send the new post to Telegram
+    send_to_telegram(post_message, keyboard=inline_keyboard)
+    time.sleep(random.uniform(1, 3))
 # ----------------- Update CSV with New Data -----------------
 df_new = pd.DataFrame(new_data)
-#df_updated = pd.concat([df_existing, df_new], ignore_index=True)
-#print(f"Total posts after update: {len(df_updated)}"
+df_updated = pd.concat([df_existing, df_new], ignore_index=True)
+print(f"Total posts after update: {len(df_updated)}")
+df_updated.to_csv(CSV_FILE, index=False)(df_updated)}"
