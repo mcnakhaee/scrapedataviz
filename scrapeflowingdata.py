@@ -136,4 +136,4 @@ for idx, data in enumerate(new_data):
 df_new = pd.DataFrame(new_data)
 df_updated = pd.concat([df_existing, df_new], ignore_index=True)
 print(f"Total posts after update: {len(df_updated)}")
-df_updated.to_csv(CSV_FILE, index=False)(df_updated)}"
+df_updated.to_csv(CSV_FILE, index=False)
