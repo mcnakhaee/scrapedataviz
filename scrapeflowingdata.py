@@ -35,7 +35,6 @@ inline_keyboard = {
         ]
     ]
 }
-
 # ----------------- Configuration -----------------
 BASE_URL = 'https://flowingdata.com/page/'
 LINK_XPATH = '//*[contains(concat(" ", @class, " "), " offset-by-two ")]//a'
