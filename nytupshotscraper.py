@@ -91,7 +91,7 @@ for article in articles:
         })
     post_message = (
         f"New post found:\n\n"
-        f"Title: {headline['Text']}\n"
+        f"Title: {headline}\n"
         f"Link: {link}\n\n"
         f"Snippet: {summary}\n\n"
         f"Choose an action below:"
