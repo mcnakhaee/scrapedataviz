@@ -33,11 +33,6 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python scrapeflowingdata.py
 
-      - name: Run send_to_telegram.py
-        env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        run: python nytupshotscraper.py
 
       # Add new files in data folder, commit along with other modified files, push
       - name: Commit and push changes
